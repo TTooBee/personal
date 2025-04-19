@@ -289,3 +289,90 @@ tags: []
     so I think it'll be good to split the note my months.
   - Or weeks..
   - Use Claude to do this.
+
+## 2025/04/15
+
+### Code-2025/04/15
+- [x] Make the code work with dot similarity when comparing the speech embeddings and LPC embeddings.
+  > Code : [[dot_similarity#2025/04/15]]
+
+### Experiments-2025/04/15
+- [x] Use dot similarity between `emb_rec` and `emb` instead of cosine similarity.
+  > Code : [[dot_similarity#2025/04/15]]
+  > Result : [[Experiments#2025/04/15]]
+- [x] Same config, `lpc_loss_shuffled` 1.
+  > Code : [[dot_similarity#2025/04/15]]
+  > Result : [[Experiments#2025/04/15]]
+
+### Tomorrow-2025/04/15
+- Change the ==min-max== standardization with ==mean-std== standardization.
+  > [!note]
+  > Base code : [[dot_similarity#2025/04/15]]
+
+## 2025/04/16
+
+### Experiments-2025/04/16
+- [ ] ~~Same setting with [[Experiments-2025/04/15]](`lpc_loss_shuffled 1`), increased lr.~~
+  > Code : [[dot_similarity#2025/04/15]]
+  > Result : [[Experiments#2025/04/16]]
+---
+> [!warning]
+> `lr_based` was set to 0.0005. Experiments should be done again with `lr_base` 0.005.
+---
+- [x] [[Experiments-2025/04/15]] with `lr_base` 0.005.
+  > Result : [[Experiments#2025/04/16]]
+
+### Paper-2025/04/16
+- [ ] FSKIL.
+  > [[FSKIL#2025/04/16]]
+
+### Code-2025/04/16
+- [ ] Look at the speech, formant, residual prototypes.
+  > [[confusing_keywords#2025/04/16]]
+
+### Idea-2025/04/16
+- Use a codebook for a residual?
+  > [[residual_codebook]]
+- Think of how I can apply forecasting algorithm during the base session.
+- Vector quantization to the residual prototypes? Or just use K-means clustering.
+  > [!note]
+  > Idea : [[k-means_prototypes#2025/04/16]]
+
+## 2025/04/17
+
+### Code-2025/04/17
+- [x] Time to look at the embeddings and cos similarity of the prototypes.
+  > [!note]
+  > [[cosine_similarity_prototypes#2025/04/17]]
+
+### Experiments-2025/04/17
+- [x] Same setting with [[Experiments#2025/04/16]], but lowered `loss_a_freq`, `loss_res`.
+  > [!note]
+  > [[Experiments#2025/04/17]]
+
+### Idea-2025/04/18
+- [[confusing_keywords#2025/04/16]]
+
+### Tomorrow-2025/04/17
+- Using the residual energy(as a scaling factor).
+
+## 2025/04/18
+
+### Experiments-2025/04/18
+- [x] Same setting with [[Experiments#2025/04/17]], `loss_lpc` and `loss_lpc_shuffled` 1.
+  > [[Experiments#2025/04/18]]
+
+### Idea-2025/04/18
+- [[confusing_keywords#2025/04/18]]
+
+## 2025/04/19
+
+### Idea-2025/04/19
+- Need to apply all the ideas to the code and experiment.
+- It can be a good timing to think about 2d embeddings(the embeddings of the model before the pooling layer).
+
+### Experiments-2025/04/19
+- [ ] Check the performance without Transformer layer.
+  > [!note] Things to experiment
+  > - Loss with LPC related features.
+  > - 

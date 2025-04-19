@@ -415,7 +415,8 @@ Harmonic mean:
 > [[Server#2025/04/09]]
 [60.008, 57.082, 53.249, 51.045, 48.206, 45.351]
 Seen acc:
-[59.365, 57.648, 56.573, 55.76, 54.647] Unseen acc:
+[59.365, 57.648, 56.573, 55.76, 54.647] 
+Unseen acc:
 [27.154, 23.551, 26.167, 22.81, 19.21]
 Harmonic mean:
 [37.263, 33.441, 35.783, 32.376, 28.427]
@@ -489,14 +490,84 @@ Harmonic mean:
 [82.659, 78.816, 77.322, 74.445, 70.604]
 
 ## 2025/04/13
-> [!note]
+> [!note] Config
 > - noise_prob 0.0
 > - lpc_loss_shuffled 0
 > - LPC order 20
 > - lpc_loss 1
-[97.055, 94.734, 92.275, 90.009, 86.721, 83.559] Seen acc:
+[97.055, 94.734, 92.275, 90.009, 86.721, 83.559]
+Seen acc:
 [96.245, 96.124, 95.475, 94.34, 92.912]
 Unseen acc:
 [75.137, 65.958, 65.134, 59.698, 56.239]
 Harmonic mean:
 [84.391, 78.234, 77.439, 73.124, 70.067]
+
+## 2025/04/15
+> [!note] Config
+> - ==Dot similarity== between speech embeddings and LPC embeddings(loss_lpc_shuffled 0).
+[97.263, 94.959, 92.607, 90.084, 86.784, 83.73]
+Seen acc:
+[96.494, 96.24, 95.481, 94.486, 93.292]
+Unseen acc:
+[74.804, 67.639, 65.419, 60.555, 56.361]
+Harmonic mean:
+[84.276, 79.444, 77.642, 73.808, 70.27]
+
+> [!note] Config
+> - ==Dot similarity== between speech embeddings and LPC embeddings(loss_lpc_shuffled 1).
+[97.339, 94.731, 92.625, 90.195, 87.128, 84.207]
+Seen acc:
+[96.369, 96.126, 95.416, 94.456, 93.495]
+Unseen acc:
+[73.289, 68.619, 66.364, 61.574, 57.855]
+Harmonic mean:
+[83.259, 80.076, 78.281, 74.55, 71.479]
+
+## 2025/04/16
+- `lr_base` was set to 0.0005.
+- This should be fixed to 0.005.
+> [!note] Config
+> Dot similarity, `lr_base` modified, `lpc_loss_shuffled` 1.
+[97.951, 95.676, 93.758, 90.771, 87.479, 84.441]
+Seen acc:
+[97.282, 97.136, 96.642, 96.014, 94.941]
+Unseen acc:
+[74.709, 70.757, 64.25, 58.047, 54.727]
+Harmonic mean:
+[84.514, 81.874, 77.185, 72.352, 69.431]
+
+## 2025/04/17
+- `loss_a_freq` and `loss_res` lowered.
+```python helper.py
+            total_loss = (
+                loss
+                + loss_a_freq * 0.5  # classification loss based on formant
+                + loss_res * 0.5  # classification loss based on residual
+                + args.loss_lpc * loss_lpc
+                + args.loss_lpc_shuffled * loss_lpc_shuffled
+            )
+```
+> [!warning]`loss_lpc` and `loss_lpc_shuffled` was set to 0.
+> Dot similarity used to compare `emb` and `emb_rec`.
+> 
+[97.927, 95.595, 93.093, 90.728, 87.807, 85.288]
+Seen acc:
+[97.351, 97.158, 96.689, 95.902, 95.143]
+Unseen acc:
+[72.471, 65.17, 63.632, 59.49, 55.967]
+Harmonic mean:
+[83.088, 78.012, 76.752, 73.43, 70.477]
+
+## 2025/04/18
+> [!note] Config
+> - `loss_lpc` and `loss_lpc_shuffled` set to 1, `loss_a_freq` and `loss_res` set to 0.5.
+> Dot similarity used to compare `emb` and `emb_rec`.
+> Full config : [[Server#2025/04/17]]
+[97.72, 95.277, 92.986, 90.391, 87.214, 84.595]
+Seen acc:
+[96.694, 96.499, 95.909, 95.144, 94.235]
+Unseen acc:
+[76.478, 68.598, 65.155, 59.328, 55.571]
+Harmonic mean:
+[85.406, 80.191, 77.596, 73.084, 69.914]

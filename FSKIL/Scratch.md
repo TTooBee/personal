@@ -119,3 +119,75 @@ tags: []
 
 ## 2025/04/14
 - Think I need to look at the actual embedding space.
+
+## 2025/04/16
+- The server will end the training till about 4 hours later.
+- It'll be good to find another thing to do during this.
+- Think of how I should forecast the new classes during the base session.
+- "Four" and "forward" is different, and "three" and "tree" is also different, but the model cannot discriminate
+  these two when one is in the base session and the other is in the new session.
+- So what I need to do is to make a method to forecast the difference between the base session and the new session.
+- Rhyme. Same voiced sound, different unvoiced sound.
+- I should think about some common patterns during the base session with the pattern I found, I can apply the pattern
+  to make a new virtual keyword embedding.
+- I have six vectors
+  - formant bcresnet
+  - formant transformer
+  - residual bcresnet
+  - residual transformer
+- If I use FSKIL to the baseline, and make prototypes(classifier) with formant prototypes and residual prototypes,
+
+## 2025/04/17
+> [!note] All keywords
+> 1. five : rec form res[!check]
+> 2. zero : form rec res[!check]
+> 3. yes : rec form res[!check]
+> 4. seven : rec res form
+> 5. no : rec form res[!check]
+> 6. nine : form res rec[!check]
+> 7. down : res rec form
+> 8. one : form rec res[!check]
+> 9. go : rec form res[!check]
+> 10. two : res rec form
+> 11. stop : res rec form
+> 12. six : res rec form
+> 13. on : form rec res[!check]
+> 14. left : res rec form
+> 15. eight : res rec form
+> 16. right : rec form res[!check]
+> 17. off : res rec form
+> 18. four : rec form res[!check]
+> 19. three : rec form res[!check]
+> 20. up : res rec form
+> 21. dog : rec form res[!check]
+> 22. wow : form rec res[!check]
+> 23. house : rec form res[!check]
+> 24. marvin : rec form res[!check]
+> 25. bird : rec form res[!check]
+> 26. happy : rec form res[!check]
+> 27. cat : res rec form
+> 28. sheila : rec form res[!check]
+> 29. bed : rec res form
+> 30. tree : rec form res[!check]
+> 31. backward : rec res form
+> 32. visual : rec res form
+> 33. follow : rec form res[!check]
+> 34. learn : form rec res[!check]
+> 35. forward : form rec res[!check]
+---
+- The model doesn't know what will come during the incremental session.
+- With a certain pattern, there can be an dynamic calibration.
+- But this is not actually about the difference between the model and the 
+
+## 2025/04/18
+- Should look at the embedding separately.
+- Formant bcresnet
+- Formant transformer
+- Residual bcresnet
+- Residual transformer
+- Just compare these four prototype vectors of the keyword ==three== and ==tree== first.
+- You need to prove your hypothesis first.
+- It'll be a great progress if the hypothesis is proved.
+- Transformer embedding vectors are too small. Maybe I can just get rid of it.
+
+## 2025/04/19

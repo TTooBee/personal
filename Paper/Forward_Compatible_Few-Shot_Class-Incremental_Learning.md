@@ -34,7 +34,7 @@ and eleventh class' prototype.
 #### Instance-Level-Manifold-Mixup
 ---
 > [!tip]
-> What I did not understand is, there is no specific label for a virtual instance.
+> What I did not understand is, there is ==no specific label== for a virtual instance.
 ---
 - Consider that a virtual instance `z` is made from a embedding made form class 1 and a embedding from class 2.
 - There will be a final embedding at the end layer of the feature encoder, and there should be a closest
