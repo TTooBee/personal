@@ -191,3 +191,54 @@ tags: []
 - Transformer embedding vectors are too small. Maybe I can just get rid of it.
 
 ## 2025/04/19
+> [!important]
+> When writing the code, and make a certain feature optional, always try to make the code work properly
+> with all the possible options.
+---
+> [!note] All keywords
+> 1. five form
+> 2. zero
+> 3. yes res
+> 4. seven
+> 5. no res
+> 6. nine
+> 7. down
+> 8. one form
+> 9. go
+> 10. two res
+> 11. stop res
+> 12. six res
+> 13. on form
+> 14. left res
+> 15. eight res
+> 16. right form
+> 17. off form
+> 18. four form
+> 19. three form
+> 20. up res
+> 21. dog form
+> 22. wow form
+> 23. house form
+> 24. marvin form
+> 25. bird res
+> 26. happy res
+> 27. cat res
+> 28. sheila
+> 29. bed res
+> 30. tree
+> 31. backward
+> 32. visual res
+> 33. follow form
+> 34. learn
+> 35. forward form
+---
+
+## 2025/04/22
+- Augmentation with formant and residual embedding vectors.
+- Then in the same class, there can be two more embeddings.
+- And for the intra class mixup, we can just make a vector and use it as a classifier.
+- Or can make a vectors with prototype level mixup.
+
+## 2025/04/23
+- Why do you think the result gets bad with residual augmentation?
+- If this gets bad, then I think it means that it could be good to make a new embedding with 

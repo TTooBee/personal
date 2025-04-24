@@ -7,7 +7,8 @@ tags: []
 # save_embeddings
 
 ## 2025/04/11
---- [!note]
+---
+> [!note]
 > Find the parts to modify(or remove, uncomment) with the query `save embeddings`.
 ---
 - Three parts to add.

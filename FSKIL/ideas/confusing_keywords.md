@@ -155,3 +155,23 @@ tags: []
 > - Use the formant prototype, add another class' residual prototype to the formant prototype.
 >   - Should also think about how to choose the class for the residual prototype.
 ---
+
+## 2025/04/22
+- Select a class that the formant embedding is similar and the residual embedding is different.
+- Augment the speech embeddings by adjusting the speech embedding to the formant and to the residual.
+- Then I can have 2 more augmented embeddings.
+- Make a virtual instance by applying manifold mixup, and compare this with virtual prototype.
+---
+> [!example]
+> Instance level mixup between 2 different classes, inside a batch.
+> Need to think about 2 different means.
+> 1. The virtual prototypes are made by applying the manifold mixup on the base prototypes.
+> 2. The virtual prototypes are made just as a new `fc`.
+---
+- Think the second way is a proper way of doing this, but still need to try both.
+  > Code : [[manifold_mixup_lpc#2025/04/22]]
+
+## 2025/04/23
+- Speech embedding - residual embedding + different class' residual embedding.
+- The result gets bad with LPC feature augmentation.
+  > The last experiment in [[Experiments#2025/04/23]].

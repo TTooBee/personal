@@ -236,7 +236,7 @@ Unseen acc:
 Harmonic mean:
 [80.601, 73.326, 69.848, 66.587, 63.963]
 ```
-```txt with noise
+```txt base with noise
 [97.656, 95.608, 93.426, 91.426, 88.204, 85.027]
 Seen acc:
 [97.162, 97.063, 96.654, 96.261, 94.852]
@@ -550,7 +550,6 @@ Harmonic mean:
 ```
 > [!warning]`loss_lpc` and `loss_lpc_shuffled` was set to 0.
 > Dot similarity used to compare `emb` and `emb_rec`.
-> 
 [97.927, 95.595, 93.093, 90.728, 87.807, 85.288]
 Seen acc:
 [97.351, 97.158, 96.689, 95.902, 95.143]
@@ -562,8 +561,8 @@ Harmonic mean:
 ## 2025/04/18
 > [!note] Config
 > - `loss_lpc` and `loss_lpc_shuffled` set to 1, `loss_a_freq` and `loss_res` set to 0.5.
-> Dot similarity used to compare `emb` and `emb_rec`.
-> Full config : [[Server#2025/04/17]]
+> - Dot similarity used to compare `emb` and `emb_rec`.
+> - Full config : [[Server#2025/04/17]]
 [97.72, 95.277, 92.986, 90.391, 87.214, 84.595]
 Seen acc:
 [96.694, 96.499, 95.909, 95.144, 94.235]
@@ -571,3 +570,132 @@ Unseen acc:
 [76.478, 68.598, 65.155, 59.328, 55.571]
 Harmonic mean:
 [85.406, 80.191, 77.596, 73.084, 69.914]
+
+## 2025/04/19
+> [!note] Config
+> Same setting with [[#2025/04/18]], but with no Transformer layer.
+[98.024, 95.928, 93.718, 91.254, 88.062, 85.054]
+Seen acc:
+[97.08, 96.936, 96.265, 95.354, 94.329]
+Unseen acc:
+[80.894, 71.596, 68.468, 62.431, 57.088]
+Harmonic mean:
+[88.251, 82.361, 80.021, 75.458, 71.129]
+
+> [!note]
+> Exactly the same with above, but with 2d embeddings extraction.
+> [!warning]
+> There was an error about [[2d_embeddings_with_lpc_code#2025/04/20]]
+[98.085, 95.695, 93.853, 91.44, 88.431, 85.874]
+Seen acc:
+[97.363, 97.228, 96.697, 96.094, 95.384]
+Unseen acc:
+[73.484, 70.522, 67.533, 61.882, 56.856]
+Harmonic mean:
+[83.755, 81.749, 79.526, 75.283, 71.245]
+- I thought the result should be exactly the same with the previous experiment, but somehow it's differnet,
+  especially in 1st incremental session.
+
+## 2025/04/20
+> [!note]
+> Exactly the same with [[#2025/04/19]], but with 2d embeddings of LPC related features extracted.
+[98.085, 95.695, 93.853, 91.44, 88.431, 85.874]
+Seen acc:
+[97.363, 97.228, 96.697, 96.094, 95.384]
+Unseen acc:
+[73.484, 70.522, 67.533, 61.882, 56.856]
+Harmonic mean:
+[83.755, 81.749, 79.526, 75.283, 71.245]
+
+## 2025/04/21
+> [!note]
+> Exactly the same with [[#2025/04/20]], with `loss_lpc` and `loss_lpc_shuffled` set to 5.
+> Server : [[Server#2025/04/21]]
+[96.994, 94.458, 92.585, 90.354, 87.002, 83.234]
+Seen acc:
+[95.883, 95.385, 94.698, 93.987, 92.91]
+Unseen acc:
+[75.701, 73.463, 70.867, 62.007, 55.459]
+Harmonic mean:
+[84.605, 83.001, 81.067, 74.719, 69.458]
+
+> [!note]
+> Exactly the same with the experiment above, with `lr_base` set to 0.002.
+> [[Server#2025/04/21]]
+[97.473, 94.686, 92.449, 89.559, 86.259, 83.36]
+Seen acc:
+[96.262, 95.813, 95.187, 94.71, 93.88]
+Unseen acc:
+[73.906, 69.516, 64.168, 56.61, 52.248]
+Harmonic mean:
+[83.615, 80.573, 76.659, 70.864, 67.134]
+
+> [!note]
+> Set `loss_lpc` and `loss_lpc_shuffled` to 0.
+> [[Server#2025/04/21]]
+[97.817, 95.47, 93.346, 91.142, 88.757, 85.838]
+Seen acc:
+[97.328, 97.217, 96.773, 96.207, 95.074]
+Unseen acc:
+[71.239, 66.857, 65.554, 62.306, 57.614]
+Harmonic mean:
+[82.265, 79.228, 78.161, 75.631, 71.749]
+- The model is confused a bit with ==down== in the base session and ==wow== in the incremental session.
+
+## 2025/04/22
+> [!note]
+> LPC augmentation applied, same setting with the last result in [[#Experiments-2025/04/21]].
+> Server : [[Server#2025/04/22]]
+> [!fail]  Stopped. `loss_lpc` and `loss_lpc_shuffled` was set to 1.
+
+## 2025/04/23
+> [!note]
+> Residual augmentation, `loss_lpc` 0.
+> Server : [[Server#2025/04/23]]
+[97.171, 95.107, 91.952, 89.029, 85.988, 83.045]
+Seen acc:
+[96.691, 96.594, 96.019, 95.7, 94.388]
+Unseen acc:
+[74.194, 60.171, 57.262, 52.053, 48.508]
+Harmonic mean:
+[83.962, 74.151, 71.741, 67.43, 64.083]
+
+> [!note]
+> Base with current code.
+> `loss_lpc` and `loss_lpc_shuffled` set to 0, LPC classification loss set to 0.
+> Server : [[Server#2025/04/23]]
+[97.817, 95.47, 93.346, 91.142, 88.757, 85.838]
+Seen acc:
+[97.328, 97.217, 96.773, 96.207, 95.074]
+Unseen acc:
+[71.239, 66.857, 65.554, 62.306, 57.614]
+Harmonic mean:
+[82.265, 79.228, 78.161, 75.631, 71.749]
+- Idea : [[confusing_keywords#2025/04/23]]
+
+## 2025/04/24
+> [!note]
+> Both formant and residual augmentation.
+> Server : The last experiment in [[Server#2025/04/23]]
+[97.653, 95.265, 92.827, 90.198, 86.83, 84.009]
+Seen acc:
+[96.951, 96.902, 96.242, 95.69, 94.304]
+Unseen acc:
+[73.11, 64.732, 62.617, 56.005, 53.047]
+Harmonic mean:
+[83.359, 77.616, 75.871, 70.656, 67.9]
+
+> [!note]
+> Residual augmentation only.
+> Server : The last experiment in [[Server#2025/04/23]]
+[97.022, 94.13, 91.981, 89.413, 86.533, 83.405]
+Seen acc:
+[96.245, 96.075, 95.619, 94.871, 93.697]
+Unseen acc:
+[66.71, 64.217, 61.421, 57.482, 53.624]
+Harmonic mean:
+[78.801, 76.98, 74.796, 71.589, 68.21]
+
+> [!note]
+> Formant augmentation only.
+> Server : The last experiment in [[Server#2025/04/23]]

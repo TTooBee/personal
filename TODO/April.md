@@ -349,6 +349,7 @@ tags: []
 - [x] Same setting with [[Experiments#2025/04/16]], but lowered `loss_a_freq`, `loss_res`.
   > [!note]
   > [[Experiments#2025/04/17]]
+  > [[Server#2025/04/17]]
 
 ### Idea-2025/04/18
 - [[confusing_keywords#2025/04/16]]
@@ -361,6 +362,7 @@ tags: []
 ### Experiments-2025/04/18
 - [x] Same setting with [[Experiments#2025/04/17]], `loss_lpc` and `loss_lpc_shuffled` 1.
   > [[Experiments#2025/04/18]]
+  > [[Server#2025/04/18]]
 
 ### Idea-2025/04/18
 - [[confusing_keywords#2025/04/18]]
@@ -369,10 +371,119 @@ tags: []
 
 ### Idea-2025/04/19
 - Need to apply all the ideas to the code and experiment.
-- It can be a good timing to think about 2d embeddings(the embeddings of the model before the pooling layer).
+> [!important]
+> It can be a good timing to think about 2d embeddings(the embeddings of the model before the pooling layer).
+> Details : [[2d_embeddings_with_lpc#2025/04/19]]
 
 ### Experiments-2025/04/19
-- [ ] Check the performance without Transformer layer.
-  > [!note] Things to experiment
-  > - Loss with LPC related features.
-  > - 
+- [x] Check the performance without Transformer layer.
+  > [!note]
+  > Same setting with [[#Experiments-2025/04/18]]
+  > Just change the `args.sequential_layer` to "None".
+  > Result : [[Experiments#2025/04/19]]
+  > [[Server#2025/04/19]]
+- [x] Same setting with above with 2d embeddings(prototypes) related to LPC.
+  > [!note]
+  > The result should be exactly the same to the one above.
+  > Result : [[Experiments#2025/04/19]]
+  > [[Server#2025/04/19]]
+
+### NeoVim-2025/04/19
+- It's almost impossible to work with server with bad internet, so think about some ideas with claude.
+> [!note]
+> Details : [[local_neovim#2025/04/19]]
+
+### Code-2025/04/19
+- [x] Make the code work with [[#Idea-2025/04/19]]
+  > [[2d_embeddings_with_lpc_code#2025/04/19]]
+
+## 2025/04/20
+
+### Code-2025/04/20
+- [ ] Set baselines with TEEN and FACT.
+- [ ] Now the model that has 2d embeddings of LPC related features exist, so make the code that
+  visualizes the 2d embeddings.
+
+### Experiments-2025/04/21
+- [x] Same setting with [[#Experiments-2025/04/19]], with 2d embedding related problem fixed.
+  > [!note]
+  > Code : [[2d_embeddings_with_lpc#2025/04/19]]
+  > Result : [[Experiments#2025/04/20]]
+  > Server : [[Server#2025/04/19]]
+
+### Idea-2025/04/20
+- 2d embeddings are available in the model, so look at the 2d embeddings and think
+  about [[#Idea-2025/04/19]], [[2d_embeddings_with_lpc#2025/04/19]]
+---
+> [!note]
+> Use the code in the branch `feature/formant-residual-classification-loss` to train the model
+> without any concern of 2d embeddings.
+---
+
+## 2025/04/21
+
+### Experiments-2025/04/21
+- [x] Same setting with [[#Experiments-2025/04/19]] with `loss_lpc` and `loss_lpc_shuffled` set to 5.
+  > [!note]
+  > Result : [[Experiments#2025/04/21]]
+- [x] Same setting with the experiment above, with `lr_base` set to 0.002.
+  > [!note]
+  > Result : [[Experiments#2025/04/21]]
+- [x] `loss_lpc` and `loss_lpc_shuffled` set to 0.
+  > [!note]
+  > Result : [[Experiments#2025/04/21]]
+
+### Study-2025/04/21
+- [ ] Dual label.
+
+### Idea-2025/04/21
+- Look at the 2d embeddings of model from [[Experiments#2025/04/20]] and [[Experiments#2025/04/21]].
+  > [[confusing_keywords#2025/04/22]]
+
+## 2025/04/22
+
+### Idea-2025/04/22
+- Look at the result of the last experiment in [[#Experiments-2025/04/21]].
+- Manifold mixup with LPC related features.
+  > [[confusing_keywords#2025/04/22]]
+
+### Code-2025/04/22
+- [x] Manifold mixup using LPC related features.
+  > Code : [[manifold_mixup_lpc#2025/04/22]]
+  > Idea : [[confusing_keywords#2025/04/22]]
+
+### Experiments-2025/04/22
+- [x] Experiment with [[#Code-2025/04/22]], same setting with the last experiment in [[#Experiments-2025/04/21]]
+  > Code : [[manifold_mixup_lpc#2025/04/22]]
+  > Result : [!fail]  `loss_lpc` and `loss_lpc_shuffled` was set to 1.
+
+### Study-2025/04/22
+- 3d computer vision.
+
+## 2025/04/23
+
+### Experiments-2025/04/23
+- [x] Residual augmentation.
+  > [!note]
+  > Related : [[#Experiments-2025/04/22]]
+  > Server : [[Server#2025/04/23]]
+  > Result : [[Experiments#2025/04/23]]
+- [x] Base with current code.
+  > [!note]
+  > Current code : [[#Code-2025/04/22]] (multiply 0 to `loss_aug_res`)
+  > Server : [[Server#2025/04/23]]
+  > Result : [[Experiments#2025/04/23]]
+- [-] Set LPC classification loss to 0, and apply formant and residual augmentation.
+  > [!note]
+  > Current code : [[#Code-2025/04/22]] (multiply 0 to `loss_aug_res`)
+  > Server : [[Server#2025/04/23]]
+  > Result : [[Experiments#2025/04/24]]
+
+### Idea-2025/04/23
+- If there is any way to find the only voiced, unvoiced signal...
+- Speech embedding - residual embedding + different class' residual embedding.
+ > [[confusing_keywords#2025/04/23]]
+
+## 2025/04/24
+
+### Code-2025/04/24
