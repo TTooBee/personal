@@ -242,3 +242,7 @@ tags: []
 ## 2025/04/23
 - Why do you think the result gets bad with residual augmentation?
 - If this gets bad, then I think it means that it could be good to make a new embedding with 
+
+## 2025/04/30
+- Now I need to think of what to do.
+- I need to find the evidence that residual and formant have advantage in specific keywords.

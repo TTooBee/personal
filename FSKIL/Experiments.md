@@ -699,3 +699,81 @@ Harmonic mean:
 > [!note]
 > Formant augmentation only.
 > Server : The last experiment in [[Server#2025/04/23]]
+[97.619, 95.301, 92.565, 89.762, 85.917, 83.135]
+Seen acc:
+[97.129, 96.896, 96.474, 95.736, 94.849]
+Unseen acc:
+[71.142, 62.791, 59.318, 52.169, 49.402]
+Harmonic mean:
+[82.129, 76.202, 73.465, 67.536, 64.966]
+
+> [!note]
+> The experiments above are done with wrong code, [[code_refactoring#2025/04/24]].
+> Server : [[Server#2025/04/24]]
+[97.97, 94.855, 91.414, 88.007, 84.536, 81.477]
+Seen acc:
+[97.359, 97.262, 96.926, 96.088, 95.289]
+Unseen acc:
+[61.938, 51.388, 47.561, 44.365, 41.264]
+Harmonic mean:
+[75.71, 67.247, 63.811, 60.703, 57.589]
+
+## 2025/04/30
+> [!note]
+> Base method with the new code (50 epochs).
+> Server : [[Server#2025/04/30]]
+[96.62, 94.175, 91.23, 88.869, 85.13, 82.342]
+Seen acc:
+[96.084, 95.788, 95.198, 94.131, 92.889]
+Unseen acc:
+[69.283, 60.005, 60.064, 53.924, 50.154]
+Harmonic mean:
+[80.512, 73.787, 73.656, 68.568, 65.138]
+
+## 2025/05/01
+> [!note]
+> Base method with the new code (100 epochs).
+> Server : [[Server#2025/05/01]]
+[97.031, 94.585, 91.471, 88.698, 84.902, 81.441]
+Seen acc:
+[96.456, 96.297, 95.877, 94.842, 93.527]
+Unseen acc:
+[70.204, 58.123, 56.025, 49.901, 47.502]
+Harmonic mean:
+[81.262, 72.492, 70.723, 65.395, 63.004]
+
+> [!note]
+> set `loss_a_freq_cls`, `loss_res_cls` to 1.
+> Server : [[Server#2025/05/01]]
+[97.305, 95.39, 93.431, 91.081, 88.428, 85.541]
+Seen acc:
+[96.852, 96.608, 95.815, 94.929, 93.921]
+Unseen acc:
+[76.153, 71.779, 69.695, 65.563, 60.383]
+Harmonic mean:
+[85.264, 82.363, 80.694, 77.559, 73.507]
+- result is pretty good.. Should test the comp code and compare with the result above.
+
+> [!note]
+> Experiment with `comp` code(`noise_prob` 0.0).
+> Server : [[Server#2025/05/01]]
+[98.561, 96.768, 94.883, 92.937, 90.109, 87.423]
+Seen acc:
+[98.17, 98.123, 97.822, 97.06, 96.0]
+Unseen acc:
+[78.427, 72.707, 70.674, 65.959, 61.092]
+Harmonic mean:
+[87.195, 83.524, 82.061, 78.543, 74.667]
+
+## 2025/05/02
+> [!note]
+> Experiment with `comp` code(`noise_prob` 0.8).
+> Server : [[Server#2025/05/02]]
+[97.305, 95.39, 93.431, 91.081, 88.428, 85.541]
+Seen acc:
+[96.852, 96.608, 95.815, 94.929, 93.921]
+Unseen acc:
+[76.153, 71.779, 69.695, 65.563, 60.383]
+Harmonic mean:
+[85.264, 82.363, 80.694, 77.559, 73.507]
+- Result with no noise is better.

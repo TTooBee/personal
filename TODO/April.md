@@ -4,7 +4,7 @@ aliases: []
 tags: []
 ---
 
-# Thing to do
+# April
 
 ## 2025-04-01
 
@@ -473,7 +473,7 @@ tags: []
   > Current code : [[#Code-2025/04/22]] (multiply 0 to `loss_aug_res`)
   > Server : [[Server#2025/04/23]]
   > Result : [[Experiments#2025/04/23]]
-- [-] Set LPC classification loss to 0, and apply formant and residual augmentation.
+- [x] Set LPC classification loss to 0, and apply formant and residual augmentation.
   > [!note]
   > Current code : [[#Code-2025/04/22]] (multiply 0 to `loss_aug_res`)
   > Server : [[Server#2025/04/23]]
@@ -487,3 +487,70 @@ tags: []
 ## 2025/04/24
 
 ### Code-2025/04/24
+- [-] Should fix this dirty code and branches...
+  > Code : [[code_refactoring#2025/04/24]]
+> [!warning]
+> - Code screwed up... Current status is written below.
+> - `origin/new` is `feature/lpc`.
+> - `origin/feature/lpc` is `feature/base`.
+> - Think I should make my program to sync the git status first. [[git_problem#2025/04/24]]
+
+### Experiments-2025/04/24
+- [x] LPC augmentation(residual only).
+  > [[Experiments#2025/04/24]]
+
+## 2025/04/25
+
+### NRL-2025/04/25
+- [x] Finish it!!
+### Code-2025/04/25
+- [-] Where the hell is my data..
+  - Fix this code as fast as possible.
+  > [[dataset_gone#2025/04/25]]
+  > Server : [[Server#2025/04/25]]
+
+### Study-2025/04/25
+- [ ] Fourier transform.
+- [ ] Z-transform.
+
+## 2025/04/26
+
+### Claude-2025/04/26
+- Claude + Tmux is crazy. I can directly see what Claude is doing with my desktop.
+
+## 2025/04/27
+- ...
+
+## 2025/04/28
+What was I doing..?
+
+### Code-2025/04/28
+
+### Study-2025/04/28
+- [ ] Z-transform.
+- [x] Fourier transform.
+
+## 2025/04/30
+
+### Experiments-2025/04/30
+- [x] Set `load_from_file` to 1, and experiment the base training method with the new code.
+> Result : [[Experiments#2025/04/30]]
+- [ ] Set all the LPC related parameters to 1 and test the code.
+> Result :
+
+### Idea-2025/04/30
+- [ ] I need to think about how I can make evidence that it's worth to use formant and residual embeddings.
+
+### Code-2025/04/30
+- [ ] Make
+> [!warning]
+> Think the code does not save the model..
+> Fix : [[code_not_saving_model#2025/04/30]]
+> [!success]  Solved!
+
+### Study-2025/04/30
+- [ ] Z-transform.
+
+### NeoVim-2025/04/30
+- [ ] The current synchronizing program does not synchronize the deleted branch.
+

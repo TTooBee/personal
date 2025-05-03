@@ -175,3 +175,7 @@ tags: []
 - Speech embedding - residual embedding + different class' residual embedding.
 - The result gets bad with LPC feature augmentation.
   > The last experiment in [[Experiments#2025/04/23]].
+
+## 2025/04/30
+- Need to make an evidence that using formant and residual embeddings is useful.
+   - Then I need a model trained with all the LPC related settings to 1.

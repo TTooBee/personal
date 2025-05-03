@@ -844,7 +844,7 @@ python train.py trans \
 > The model was initially trained with 100 epochs but stopped at 88th epoch.
 > [[Experiments#2025/04/23]]
 ---
-- [ ] Only with formant and residual classification loss.
+- [x] Only with formant and residual classification loss.
   1. Formant augmentation and residual augmentation both applied.
   2. Residual augmentation only.
   3. Formant augmentation only.
@@ -941,3 +941,222 @@ python train.py trans \
 ```
 > [!note] Result
 > [[Experiments#2025/04/24]]
+> [!fail]  All the experiments of LPC augmentation is done with wrong code,
+>   [[code_refactoring#2025/04/24]].
+---
+## 2025/04/24
+- [x] Only with residual classification loss.
+```sh full config
+python train.py trans \
+  -project trans \
+  -dataset gsc2 \
+  -dataroot ./data/datasets \
+  -base_mode 'ft_cos' \
+  -new_mode 'avg_cos' \
+  -lr_base 0.005 \
+  -decay 0.0005 \
+  -epochs_base 100 \
+  -batch_size_base 128 \
+  -schedule Cosine \
+  -tmax 100 \
+  -gpu '0' \
+  -temperature 16 \
+  -spec_aug_mode 'spec' \
+  -noise_prob 0.0 \
+  -matrix_loss_metric 'attention' \
+  -num_features_pri 101 \
+  -vector_based_only 1 \
+  -sequential_layer "None" \
+  -load_from_file 1 \
+  -loss_lpc 1 \
+  -loss_lpc_shuffled 1 \
+  -loss_a_freq_cls 1 \
+  -loss_res_cls 1 \
+  -loss_aug_a_freq 0 \
+  -loss_aug_res 1 \
+  -shift_weight_lpc 0.1 \
+  -emb_rec_similarity "cos"
+```
+> [!note] Result
+> [[Experiments#2025/04/30]]
+> [!Fail]  Stopped?
+---
+## 2025/04/30
+- [x] Base code with the new code (50 epochs).
+```sh full config
+python train.py trans \
+  -project trans \
+  -dataset gsc2 \
+  -dataroot ./data/datasets \
+  -base_mode 'ft_cos' \
+  -new_mode 'avg_cos' \
+  -lr_base 0.005 \
+  -decay 0.0005 \
+  -epochs_base 100 \
+  -batch_size_base 128 \
+  -schedule Cosine \
+  -tmax 100 \
+  -gpu '0' \
+  -temperature 16 \
+  -spec_aug_mode 'spec' \
+  -noise_prob 0.0 \
+  -matrix_loss_metric 'attention' \
+  -num_features_pri 101 \
+  -vector_based_only 1 \
+  -sequential_layer "None" \
+  -load_from_file 1 \
+  -loss_lpc 0 \
+  -loss_lpc_shuffled 0 \ -loss_a_freq_cls 0 \
+  -loss_res_cls 0 \
+  -loss_aug_a_freq 0 \
+  -loss_aug_res 0 \
+  -shift_weight_lpc 0.1 \
+  -emb_rec_similarity "cos"
+```
+> [!note] Result
+> [[Experiments#2025/04/30]]
+---
+## 2025/05/01
+- [x] Base code with the new code (100 epochs).
+```sh full config
+python train.py trans \
+  -project trans \
+  -dataset gsc2 \
+  -dataroot ./data/datasets \
+  -base_mode 'ft_cos' \
+  -new_mode 'avg_cos' \
+  -lr_base 0.005 \
+  -decay 0.0005 \
+  -epochs_base 100 \
+  -batch_size_base 128 \
+  -schedule Cosine \
+  -tmax 100 \
+  -gpu '0' \
+  -temperature 16 \
+  -spec_aug_mode 'spec' \
+  -noise_prob 0.0 \
+  -matrix_loss_metric 'attention' \
+  -num_features_pri 101 \
+  -vector_based_only 1 \
+  -sequential_layer "None" \
+  -load_from_file 1 \
+  -loss_lpc 0 \
+  -loss_lpc_shuffled 0 \
+  -loss_a_freq_cls 0 \
+  -loss_res_cls 0 \
+  -loss_aug_a_freq 0 \
+  -loss_aug_res 0 \
+  -shift_weight_lpc 0.1 \
+  -emb_rec_similarity "cos"
+```
+> [!note] Result
+> [[Experiments#2025/05/01]]
+___
+- [ ] Set LPC classification loss(`loss_a_freq_cls`, `loss_res_cls`) to 1.
+```sh full config
+python train.py trans \
+  -project trans \
+  -dataset gsc2 \
+  -dataroot ./data/datasets \
+  -base_mode 'ft_cos' \
+  -new_mode 'avg_cos' \
+  -lr_base 0.005 \
+  -decay 0.0005 \
+  -epochs_base 0 \
+  -batch_size_base 128 \
+  -schedule Cosine \
+  -tmax 100 \
+  -gpu '0' \
+  -temperature 16 \
+  -spec_aug_mode 'spec' \
+  -noise_prob 0.0 \
+  -matrix_loss_metric 'attention' \
+  -num_features_pri 101 \
+  -vector_based_only 1 \
+  -sequential_layer "None" \
+  -load_from_file 1 \
+  -loss_lpc 0 \
+  -loss_lpc_shuffled 0 \
+  -loss_a_freq_cls 1 \
+  -loss_res_cls 1 \
+  -loss_aug_a_freq 0 \
+  -loss_aug_res 0 \
+  -shift_weight_lpc 0.1 \
+  -emb_rec_similarity "cos" \
+  -model_dir "/home/sehyun/Projects/FSKIL/checkpoint/gsc2/trans/ft_cos-avg_cos-data_init-start_0/0501-17-34-18-445-Epo_100-Bs_128-sgd-Lr_0.005-decay0.0005-Mom_0.9-Max_100-NormF-T_16.00/session0_max_acc.pth"
+```
+> [!note] Result
+> [[Experiments#2025/05/01]]
+> Training with 100 epochs went to nan loss. It was stopped and tested with the model that made the best result.
+---
+- [ ] Experiment with `comp` code(`noise_prob` 0.0).
+```sh full config
+python train.py comp \
+  -project comp \
+  -dataset gsc2 \
+  -dataroot ./data/datasets \
+  -base_mode 'ft_cos' \
+  -new_mode 'avg_cos' \
+  -lr_base 0.005 \
+  -decay 0.0005 \
+  -epochs_base 100 \
+  -batch_size_base 128 \
+  -schedule Cosine \
+  -tmax 100 \
+  -gpu '0' \
+  -temperature 16 \
+  -spec_aug_mode 'spec' \
+  -noise_prob 0.0 \
+  -matrix_loss_metric 'attention' \
+  -num_features_pri 101 \
+  -vector_based_only 1 \
+  -sequential_layer "None" \
+  -load_from_file 0 \
+  -loss_lpc 0 \
+  -loss_lpc_shuffled 0 \
+  -loss_a_freq_cls 1 \
+  -loss_res_cls 1 \
+  -loss_aug_a_freq 0 \
+  -loss_aug_res 0 \
+  -shift_weight_lpc 0.1 \
+  -emb_rec_similarity "cos"
+```
+> [!note] Result
+> [[Experiments#2025/05/01]]
+---
+## 2025/05/02
+
+- [-] Experiment with `comp` code(`noise_prob` 0.8).
+```sh full config
+python train.py comp \
+  -project comp \
+  -dataset gsc2 \
+  -dataroot ./data/datasets \
+  -base_mode 'ft_cos' \
+  -new_mode 'avg_cos' \
+  -lr_base 0.005 \
+  -decay 0.0005 \
+  -epochs_base 100 \
+  -batch_size_base 128 \
+  -schedule Cosine \
+  -tmax 100 \
+  -gpu '0' \
+  -temperature 16 \
+  -spec_aug_mode 'spec' \
+  -noise_prob 0.8 \
+  -matrix_loss_metric 'attention' \
+  -num_features_pri 101 \
+  -vector_based_only 1 \
+  -sequential_layer "None" \
+  -load_from_file 0 \
+  -loss_lpc 0 \
+  -loss_lpc_shuffled 0 \
+  -loss_a_freq_cls 1 \
+  -loss_res_cls 1 \
+  -loss_aug_a_freq 0 \
+  -loss_aug_res 0 \
+  -shift_weight_lpc 0.1 \
+  -emb_rec_similarity "cos"
+```
+> [!note] Result
+> [[Experiments#2025/05/02]]
