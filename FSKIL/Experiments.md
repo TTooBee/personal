@@ -776,4 +776,419 @@ Unseen acc:
 [76.153, 71.779, 69.695, 65.563, 60.383]
 Harmonic mean:
 [85.264, 82.363, 80.694, 77.559, 73.507]
-- Result with no noise is better.
+- Result without noise is better.
+
+## 2025/05/04
+> Experiment with `loss_aug_a_freq` and `loss_aug_res` 1.
+> Server : [[Server#2025/05/03]]
+> Think this result is for `comp`, not `trans`.
+[98.351, 96.462, 94.502, 92.218, 88.224, 84.748]
+Seen acc:
+[97.998, 97.949, 97.385, 95.275, 93.513]
+Unseen acc:
+[76.618, 70.915, 68.88, 63.921, 60.678]
+Harmonic mean:
+[85.999, 82.268, 80.689, 76.51, 73.599]
+
+## 2025/05/05
+> Experiment with `loss_aug_a_freq` and `loss_aug_res` 1.
+> Server : [[Server#2025/05/04]]
+[97.744, 95.607, 93.53, 91.544, 88.55, 85.631]
+Seen acc:
+[97.317, 97.231, 96.68, 95.695, 94.471]
+Unseen acc:
+[73.323, 68.47, 68.3, 63.298, 59.257]
+Harmonic mean:
+[83.633, 80.354, 80.049, 76.196, 72.831]
+
+## 2025/05/07
+> Experiment with [[manifold_mixup_lpc#2025/05/07]], only 30 epochs and pre-trained model.
+> Server : [[Server#2025/05/07]]
+[97.61, 95.263, 92.762, 89.952, 87.013, 83.973]
+Seen acc:
+[97.205, 97.18, 96.832, 96.203, 95.478]
+Unseen acc:
+[69.511, 62.71, 58.778, 54.445, 49.67]
+Harmonic mean:
+[81.058, 76.229, 73.152, 69.537, 65.346]
+- Bad Result. I should try training the base classifier with augmented embeddings.
+
+## 2025/05/08
+> Experiments with [[manifold_mixup_lpc#2025/05/07]], 10 epochs without using pre-trained model.
+> Server : [[Server#2025/05/08]]
+[97.217, 95.38, 93.2, 90.983, 87.452, 85.198]
+Seen acc:
+[96.835, 96.592, 96.016, 94.847, 94.052]
+Unseen acc:
+[76.309, 69.967, 68.03, 61.983, 58.629]
+Harmonic mean:
+[85.355, 81.151, 79.636, 74.972, 72.231]
+- Only with 10 epochs show a moderate(maybe good) result.
+- Lets work with 30 epochs.
+
+> [[manifold_mixup_lpc#2025/05/07]] without using pre-trained model, 30 epochs.
+> Server : [[Server#2025/05/08]]
+[97.488, 95.573, 93.128, 90.782, 87.656, 84.919]
+Seen acc:
+[97.063, 97.014, 96.679, 95.854, 95.217]
+Unseen acc:
+[75.84, 66.168, 63.697, 58.581, 54.614]
+Harmonic mean:
+[85.149, 78.676, 76.797, 72.72, 69.414]
+- Performance drops a bit when compared to the model trained only with LPC classification loss.
+- Should try 100 epochs.
+
+> [[manifold_mixup_lpc#2025/05/07]] without using pre-trained model, 100 epochs.
+> Server : [[Server#2025/05/08]]
+[97.549, 95.606, 92.933, 90.689, 87.856, 85.117]
+Seen acc:
+[97.101, 97.039, 96.644, 96.089, 94.732]
+Unseen acc:
+[75.63, 64.172, 63.221, 58.935, 55.529]
+Harmonic mean:
+[85.031, 77.255, 76.439, 73.06, 70.016]
+
+> [[manifold_mixup_lpc#2025/05/07]] without using pre-trained model, apply residual replacement
+> at the beginning of the base session, 10 epochs.
+> Server : [[Server#2025/05/08]]
+[96.924, 94.584, 92.566, 90.501, 87.694, 84.667]
+Seen acc:
+[96.047, 95.827, 95.214, 94.279, 93.279]
+Unseen acc:
+[75.154, 70.163, 69.053, 64.588, 60.02]
+Harmonic mean:
+[84.326, 81.011, 80.05, 76.659, 73.042]
+
+> Same setting with the experiment above, 30 epochs.
+> Server : [[Server#2025/05/08]]
+[97.36, 95.3, 92.674, 90.563, 87.871, 84.459]
+Seen acc:
+[96.855, 96.696, 96.144, 95.382, 94.133]
+Unseen acc:
+[74.878, 65.163, 65.078, 61.163, 56.798]
+Harmonic mean:
+[84.46, 77.858, 77.618, 74.533, 70.848]
+
+> Same setting with the experiment above, 100 epochs.
+> Server : [[Server#2025/05/08]]
+[97.72, 94.741, 91.289, 88.226, 84.969, 81.108]
+Seen acc:
+[96.956, 96.871, 96.451, 95.811, 94.712]
+Unseen acc:
+[65.691, 53.179, 50.883, 46.867, 42.437]
+Harmonic mean:
+[78.319, 68.664, 66.62, 62.944, 58.612]
+
+## 2025/05/09
+> Use feature generator to make prototypes for residual replaced embeddings, 10 epochs.
+> Detail : [[manifold_mixup_lpc#2025/05/09]]
+> Server : [[Server#2025/05/09]]
+[96.522, 94.131, 92.028, 89.424, 86.615, 82.91]
+Seen acc:
+[95.758, 95.475, 94.801, 94.139, 92.965]
+Unseen acc:
+[73.134, 68.791, 65.164, 59.814, 54.042]
+Harmonic mean:
+[82.931, 79.966, 77.237, 73.15, 68.351]
+
+> Use feature generator to make prototypes for residual replaced embeddings, 10 epochs.
+> Detail : [[manifold_mixup_lpc#2025/05/09]]
+> Server : [[Server#2025/05/09]]
+> [!fail]  Stopped at 30th epoch.
+[96.986, 94.835, 92.575, 89.779, 86.712, 83.36]
+Seen acc:
+[96.728, 96.607, 96.247, 95.693, 94.732]
+Unseen acc:
+[70.481, 65.204, 60.686, 55.154, 50.126]
+Harmonic mean:
+[81.544, 77.858, 74.437, 69.976, 65.561]
+
+> Experiment with number 3 in [[May#Code-2025/05/09]], 10 epochs.
+> Server : [[Server#2025/05/09]]
+[96.531, 94.176, 91.942, 89.837, 86.777, 83.784]
+Seen acc:
+[95.733, 95.525, 94.887, 93.717, 92.698]
+Unseen acc:
+[73.584, 67.32, 66.734, 61.932, 58.335]
+Harmonic mean:
+[83.21, 78.98, 78.358, 74.579, 71.607]
+- Should also try this without feature generator.
+
+> Experiment with number 3 in [[May#Code-2025/05/09]], 10 epochs, without feature generator.
+> Server : [[Server#2025/05/09]]
+[96.836, 94.686, 92.998, 90.654, 88.004, 84.82]
+Seen acc:
+[96.095, 95.984, 95.358, 94.844, 93.723]
+Unseen acc:
+[76.078, 72.684, 69.338, 64.108, 59.58]
+Harmonic mean:
+[84.923, 82.725, 80.293, 76.504, 72.849]
+- The result from this experiment(without using feature generator) is better than the one right above.
+- Train the model with this method, 100 epochs.
+
+> Experiment with number 3 in [[May#Code-2025/05/09]], 100 epochs, without feature generator.
+> Server : [[Server#2025/05/09]]
+[97.241, 94.912, 92.23, 89.384, 86.456, 82.658]
+Seen acc:
+[96.805, 96.72, 96.312, 95.696, 94.111]
+Unseen acc:
+[70.024, 61.32, 57.854, 53.556, 48.997]
+Harmonic mean:
+[81.265, 75.055, 72.286, 68.677, 64.443]
+- Why is training with 10 epochs show much better performance than with 100 epochs? Over-fit?
+- Let's train this with 30 epochs.
+
+## 2025/05/10
+> Experiment with number 3 in [[May#Code-2025/05/09]], 30 epochs, without feature generator.
+> Server : [[Server#2025/05/10]]
+[97.138, 95.255, 92.942, 90.403, 87.718, 83.577]
+Seen acc:
+[96.685, 96.561, 96.01, 95.704, 93.858]
+Unseen acc:
+[76.497, 67.981, 64.772, 58.885, 53.976]
+Harmonic mean:
+[85.414, 79.789, 77.356, 72.91, 68.537]
+
+## 2025/05/12
+> Experiment with [[manifold_mixup_lpc#structure_vector-2025/05/12]], 10 epochs.
+> Server : [[Server#2025/05/12]]
+[97.204, 94.857, 92.375, 90.197, 86.659, 83.405]
+Seen acc:
+[96.458, 96.325, 95.952, 94.821, 93.649]
+Unseen acc:
+[73.887, 65.234, 64.048, 58.281, 54.703]
+Harmonic mean:
+[83.677, 77.788, 76.819, 72.191, 69.064]
+
+> Experiment with [[manifold_mixup_lpc#structure_vector-2025/05/12]], 30 epochs.
+> Server : [[Server#2025/05/12]]
+[97.402, 95.38, 92.849, 90.524, 87.531, 84.351]
+Seen acc:
+[97.126, 97.064, 96.668, 95.904, 94.893]
+Unseen acc:
+[72.469, 63.779, 62.562, 57.56, 53.535]
+Harmonic mean:
+[83.005, 76.977, 75.962, 71.942, 68.452]
+
+## 2025/05/13
+> Experiment with [[manifold_mixup_lpc#Single dummy classifier-2025/05/13]], 10 epochs,
+> match "three" with "eight".
+> Server : [[Server#2025/05/13]]
+[96.851, 94.96, 92.975, 90.81, 87.853, 84.946]
+Seen acc:
+[96.299, 96.044, 95.21, 94.523, 93.514]
+Unseen acc:
+[77.436, 71.734, 70.618, 64.195, 59.007]
+Harmonic mean:
+[85.843, 82.128, 81.091, 76.461, 72.357]
+- No big improvement to distinguish "three" and "tree" when looked at the confusion matrix.
+
+> Experiment with [[manifold_mixup_lpc#Single dummy classifier-2025/05/13]], 10 epochs, match "three" with "two".
+> Server : [[Server#2025/05/13]]
+[96.841, 94.858, 92.697, 90.401, 87.776, 84.081]
+Seen acc:
+[96.172, 95.943, 94.993, 94.021, 92.164]
+Unseen acc:
+[77.646, 70.475, 69.472, 65.5, 60.362]
+Harmonic mean:
+[85.922, 81.26, 80.252, 77.211, 72.948]
+
+> Experiment with [[manifold_mixup_lpc#Using lamda-2025/05/13]], 10 epochs, match "three" with "two",
+> using lamdas.
+> Server : [[Server#2025/05/13]]
+[96.577, 94.244, 92.489, 90.287, 87.56, 84.081]
+Seen acc:
+[95.732, 95.584, 94.861, 94.187, 93.131]
+Unseen acc:
+[74.743, 71.446, 69.529, 64.139, 57.462]
+Harmonic mean:
+[83.945, 81.771, 80.243, 76.312, 71.072]
+
+> Experiment with [[manifold_mixup_lpc#Using new structure vector-2025/05/13]], 10 epochs,
+> match "three" with "two", using lamdas and new structure vectors.
+> Server : [[Server#2025/05/13]]
+> NaN occurs.
+
+
+> Experiment with FACT, set `loss_res_replace` and `loss_res_replace_fact` to 1.
+> Server : [[Server#2025/05/14]]
+[97.573, 95.563, 92.518, 89.77, 86.458, 83.072]
+Seen acc:
+[97.17, 97.134, 96.99, 96.472, 94.985]
+Unseen acc:
+[74.621, 60.949, 56.922, 50.985, 48.029]
+Harmonic mean:
+[84.416, 74.9, 71.741, 66.713, 63.798]
+
+> Experiment with FACT, set `loss_res_replace` 0, `loss_res_replace_fact` to 1.
+> Server : [[Server#2025/05/14]]
+[97.78, 95.208, 92.764, 90.075, 86.954, 84.018]
+Seen acc:
+[97.315, 97.303, 96.87, 96.305, 94.758]
+Unseen acc:
+[67.489, 61.69, 59.265, 55.198, 52.874]
+Harmonic mean:
+[79.703, 75.508, 73.539, 70.175, 67.875]
+
+## 2025/05/14
+> Experiment with [[manifold_mixup_lpc#structure_vector-2025/05/12]], 100 epochs.
+> Server : [[Server#2025/05/14]]
+[97.707, 95.365, 92.659, 89.86, 86.199, 82.694]
+Seen acc:
+[97.291, 97.267, 96.788, 96.319, 94.862]
+Unseen acc:
+[69.712, 61.053, 58.246, 50.886, 47.404]
+Harmonic mean:
+[81.224, 75.018, 72.726, 66.591, 63.217]
+
+> Fine tune the LPC classification loss based model, 1 epoch.
+> Server : [[Server#2025/05/14]]
+[97.192, 94.901, 92.649, 90.229, 87.502, 84.405]
+Seen acc:
+[96.823, 96.568, 95.776, 94.866, 93.596]
+Unseen acc:
+[69.721, 65.795, 65.028, 61.222, 57.675]
+Harmonic mean:
+[81.067, 78.265, 77.462, 74.418, 71.371]
+
+> Use `get_least_similar_emb_idx`, set `loss_res_replace` to 1, 10 epochs.
+> Server : [[Server#2025/05/14]]
+[96.943, 94.925, 92.978, 90.517, 87.553, 83.793]
+Seen acc:
+[96.316, 96.196, 95.643, 95.076, 93.487]
+Unseen acc:
+[76.435, 70.732, 67.211, 61.276, 55.933]
+Harmonic mean:
+[85.232, 81.522, 78.945, 74.523, 69.991]
+
+> Experiment with [[manifold_mixup_lpc#Least and most similar embeddings-2025/05/14]], 10 epochs.
+> Server : [[Server#2025/05/14]]
+[96.943, 94.925, 92.978, 90.517, 87.553, 83.793]
+Seen acc:
+[96.316, 96.196, 95.643, 95.076, 93.487]
+Unseen acc:
+[76.435, 70.732, 67.211, 61.276, 55.933]
+Harmonic mean:
+[85.232, 81.522, 78.945, 74.523, 69.991]
+
+> Experiment with [[manifold_mixup_lpc#Least and most similar embeddings-2025/05/14]], 100 epochs.
+> Server : [[Server#2025/05/14]]
+[97.848, 95.266, 92.493, 89.854, 86.526, 83.495]
+Seen acc:
+[97.474, 97.412, 97.184, 96.246, 95.021]
+Unseen acc:
+[66.499, 58.773, 56.518, 52.342, 48.975]
+Harmonic mean:
+[79.061, 73.313, 71.471, 67.808, 64.636]
+
+## 2025/05/15
+> Experiment with [[manifold_mixup_lpc#Least and most similar embeddings-2025/05/14]], with 
+> `emb_replace_mode` set to `sturct`, 100 epochs.
+> Server : [[Server#2025/05/15]]
+> Stopped. `emb_replace_mode` was set to "add".
+
+> Experiment with [[manifold_mixup_lpc#Least and most similar embeddings-2025/05/14]],
+> without using least similar residual embeddings for augmentation, 100 epochs.
+> Server : [[Server#2025/05/15]]
+[97.72, 95.719, 93.327, 90.593, 87.198, 84.045]
+Seen acc:
+[97.466, 97.416, 96.985, 96.134, 95.224]
+Unseen acc:
+[72.633, 65.184, 61.503, 56.222, 51.763]
+Harmonic mean:
+[83.237, 78.105, 75.272, 70.95, 67.068]
+
+> [!important]
+> Better model from this training!
+> [Path to the model](/home/sehyun/Projects/FSKIL/checkpoint/gsc2/trans/ft_cos-avg_cos-data_init-start_0/0515-15-03-45-130-Epo_0-Bs_128-sgd-Lr_0.005-decay0.0005-Mom_0.9-Max_100-NormF-T_16.00)
+
+> LPC classification loss with current code, 100 epochs.
+> Server : [[Server#2025/05/15]]
+> Result of the model in the middle of the base training.
+[97.607, 95.768, 93.535, 91.192, 88.501, 85.234]
+Seen acc:
+[97.015, 96.896, 96.2, 95.486, 94.486]
+Unseen acc:
+[79.3, 70.266, 68.246, 63.045, 57.842]
+Harmonic mean:
+[87.268, 81.46, 79.847, 75.946, 71.756]
+> Final result
+[97.607, 95.768, 93.535, 91.192, 88.501, 85.234]
+Seen acc:
+[97.015, 96.896, 96.2, 95.486, 94.486]
+Unseen acc:
+[79.3, 70.266, 68.246, 63.045, 57.842]
+Harmonic mean:
+[87.268, 81.46, 79.847, 75.946, 71.756]
+
+## 2025/05/19
+> Experiment with [[insert_incremental_session#Matrix shape mixmatch-2025/05/19]],
+> only use LPC classification loss, 30 epochs.
+> Server : [[Server#2025/05/19]]
+> Result with best base session
+[97.537, 95.506, 93.463, 90.987, 88.455, 85.009]
+Seen acc:
+[97.046, 96.853, 96.299, 95.707, 94.183]
+Unseen acc:
+[75.446, 70.281, 66.911, 62.679, 59.058]
+Harmonic mean:
+[84.894, 81.455, 78.959, 75.749, 72.595]
+> Result with best fifth session
+[96.485, 94.53, 92.832, 90.866, 87.918, 85.126]
+Seen acc:
+[95.952, 95.614, 94.841, 93.526, 92.487]
+Unseen acc:
+[76.2, 74.175, 73.0, 68.363, 63.244]
+Harmonic mean:
+[84.943, 83.541, 82.499, 78.989, 75.12]
+
+> Experiment with [[insert_incremental_session#Matrix shape mixmatch-2025/05/19]], base, 30 epochs.
+> Server : [[Server#2025/05/19]]
+> Result with best base session
+[96.65, 94.199, 91.325, 88.674, 84.912, 81.532]
+Seen acc:
+[95.789, 95.593, 95.232, 93.781, 92.4]
+Unseen acc:
+[73.515, 61.85, 58.752, 53.906, 51.273]
+Harmonic mean:
+[83.187, 75.106, 72.671, 68.46, 65.95]
+> Result with best fifth session
+[95.421, 92.766, 90.423, 87.827, 84.872, 81.541]
+Seen acc:
+[94.665, 94.385, 93.829, 92.757, 91.431]
+Unseen acc:
+[67.873, 63.315, 60.673, 57.382, 53.729]
+Harmonic mean:
+[79.061, 75.789, 73.693, 70.902, 67.684]
+
+> Experiment with [[insert_incremental_session#Matrix shape mixmatch-2025/05/19]],
+> residual replace, 30 epochs.
+> Server : [[Server#2025/05/19]]
+> 2025/05/22-22:10:51 : Wait.. This is the result for base..
+[96.65, 94.199, 91.325, 88.674, 84.912, 81.532]
+Seen acc:
+[95.789, 95.593, 95.232, 93.781, 92.4]
+Unseen acc:
+[73.515, 61.85, 58.752, 53.906, 51.273]
+Harmonic mean:
+[83.187, 75.106, 72.671, 68.46, 65.95]
+
+## 2025/05/22
+> 16:38:39 : Experiment with [[form_exc_attention#2025/05/22]], 10 epochs.
+> Server : [[Server#2025/05/22]]
+> Stopped. Bad result.
+
+> 22:11:25 : Experiment with residual replacement.
+> Server : [[Server#2025/05/22]]
+> Stopped. Bad result.
+
+## 2025/05/25
+> 23:37:06 : Experiment with [[manifold_mixup_lpc#Spectrum boundary detection-2025/05/24]].
+> 23:37:45 : Server : [[Server#2025/05/25]]
+[95.512, 92.605, 90.043, 87.305, 84.014, 80.649]
+Seen acc:
+[94.616, 94.006, 93.077, 92.227, 91.129]
+Unseen acc:
+[66.179, 63.162, 61.198, 55.113, 51.662]
+Harmonic mean:
+[77.883, 75.557, 73.844, 68.996, 65.941]

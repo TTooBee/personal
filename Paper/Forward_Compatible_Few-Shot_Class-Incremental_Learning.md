@@ -16,7 +16,9 @@ tags: []
 - The key thing is to predict the future class' embedding, and preemptively reserve the space for the future embeddings.
 - The paper proposes two things.
   - [Prototype level Manifold Mixup](#Prototype-Level-Manifold-Mixup)
+  - [[#Prototype-Level-Manifold-Mixup]]
   - [Instance level Manifold Mixup](#Instance-Level-Manifold-Mixup)
+  - [[#Instance-Level-Manifold-Mixup]]
 - This randomly happens inside the batch.
 ---
 > [!note]

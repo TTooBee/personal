@@ -246,3 +246,58 @@ tags: []
 ## 2025/04/30
 - Now I need to think of what to do.
 - I need to find the evidence that residual and formant have advantage in specific keywords.
+
+## 2025/05/05
+- Now my analysis code only looks at the similarities in their own domain.
+- I should check the similarity of the speech prototypes and the LPC embeddings, so that I know what feature
+  does the model consider more.
+- I want the result to be like below.
+> [!example]
+> five : formant 0.5, residual 0.7
+> zero : formant 0.2, residual 0.8
+> ...
+- Formant similarity is greater than 0.8, and residual similarity is smaller than that.
+
+## 2025/05/10
+```python temp
+    # get a new embedding
+    new_emb = target_emb - target_residual_emb + adding_residual_emb
+
+    cos_sim_new = calc_cos_sim(new_emb, comparing_emb)
+    print(
+        f"speech similarity between <<{target_keyword}>> - <<{target_keyword}'s res>> + <<{adding_keyword}'s res>> and <<{comparing_keyword}>> : {cos_sim_new:.4f}"
+    )
+
+    target_structure_vector, target_projection_vector = get_structure_vector(target_emb, target_formant_emb, target_residual_emb)
+    comparing_structure_vector, comparing_projection_vector = get_structure_vector(target_emb, target_formant_emb, target_residual_emb)
+
+    cos_sim_target_comp = calc_cos_sim(target_emb, comparing_emb)
+
+    rec_comparing_emb = target_formant_emb + comparing_residual_emb + comparing_structure_vector
+    cos_sim_rec_comp_comp = calc_cos_sim(rec_comparing_emb, comparing_emb)
+
+    print(f"target-comp : {cos_sim_target_comp}")
+    print(f"rec_comp-comp : {cos_sim_rec_comp_comp}")
+```
+
+## 2025/05/13
+- Should I think about why nan occurs, or think about some other methods?
+- Think using new structure vector is not the ==only== way to achieve the goal.
+
+## 2025/05/14
+- 14:06:21 : Let's look at the class similarity of the new fine tuned model.
+- 14:21:28 : Just use formant embeddings as replaced embeddings.
+
+## 2025/05/15
+- 11:04:59 : Think the most important part is how I choose the embeddings to match for Manifold Mixup.
+- 11:09:53 : Speech prototypes lean to formant prototypes more than to residual prototypes.
+
+## 2025/05/17
+- 13:47:35 : I should look at the part before the part that gets confusion matrix.
+- 21:28:11 : I can make the code use residual energy, or do incremental test during the base session.
+  - Or I can try using NotebookLM or other AI tools.
+  - To make the result better, I think making the code do incremental test is the best thing I can do right now.
+
+## 2025/05/25
+- 15:54:02 : Why does it not work?
+- 15:54:30 : Think about ==what I need to look at.==

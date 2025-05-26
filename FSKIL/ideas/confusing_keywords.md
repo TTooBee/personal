@@ -179,3 +179,49 @@ tags: []
 ## 2025/04/30
 - Need to make an evidence that using formant and residual embeddings is useful.
    - Then I need a model trained with all the LPC related settings to 1.
+
+## 2025/05/08
+
+### Manifold Mixup LPC-2025/05/09
+- Now it's time to apply my main idea.
+> [!note] Ideas
+> 1. Do not concatenate the dummy classifier while training the speech prototypes(just like `comp`).
+> 2. Opposite to 1.
+> 3. With 1, use feature generator to make dummy classifier.
+
+## 2025/05/09
+
+### Projection vector of the speech embedding to the vector span of the formant and residual embedding-2025/05/09
+- Speech, formant, residual embeddings are in a embedding space.
+- There should be a vector span, which is the plane that formant and the residual embeddings make.
+- And there should be a difference vector between the speech and the span, and this vector can be a
+  good guideline that tells us the structure of the formant and residual(not the formant and residual themselves).
+- Then a new embedding can be made like the method below.
+> [!note] New method
+> 1. Get the difference vector between the plane and the speech embedding.
+> - I'll call this vector a structure vector.
+> 2. Add formant and different class's residual embedding.
+> 3. Add the structure vector to get the new embedding that has almost the same formant component and the
+> different residual component.
+- This can be done with solving a simultaneous equation(ask GPT if you don't remember how to get the solution).
+- If this works well, then I can ease my worry about what class I should choose for augmentation.
+
+## 2025/05/10
+- Today's work is closely related to [[#Projection vector of the speech embedding to the vector span of the formant and residual embedding-2025/05/09]]
+- Should look at the similarity of the structure vector between classes.
+  > Code : [[manifold_mixup_lpc#Similarity of structure vector between classes-2025/05/10]]
+  - Maybe I won't need this..?
+- What does the sign(positive or negative) of the structure vector?
+
+## 2025/05/16
+
+### Residual energy-2025/05/16
+- Use ==residual energy / speech energy== and a structure vector.
+
+## 2025/05/19
+
+### Residual energy-2025/05/19
+- If I use Fourier transform to the residual energy ratio vector, then I don't need to worry about
+  the translation invariance.
+- I also don't need to think about training the new model with residual energy.
+- The final equation that gets the ratio of the energy is `ener_res^2 / ener`.
